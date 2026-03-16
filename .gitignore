@@ -1,0 +1,18 @@
+# binary
+corelib
+
+# object files
+*.o
+
+# debug files
+*.dSYM
+core
+
+# editor
+.cache/
+compile_commands.json
+
+# nix
+.direnv/
+shell.nix.bak
+result
