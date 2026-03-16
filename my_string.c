@@ -33,13 +33,14 @@ int string_append(String *s, const char *text)
         char *new_str = my_malloc(new_capacity);
         if (!new_str) return -1;
 
+        memcpy(new_str, s->str, s->len);
         my_free((void **)&s->str);
 
-        memcpy(s->str, new_str, new_len);
+        s->str = new_str;
         s->capacity = new_capacity;
     }
     
-    memcpy(s->str + s->len, text, new_len);
+    memcpy(s->str + s->len, text, text_len);
     s->str[new_len] = '\0';
     s->len = new_len;
 

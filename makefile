@@ -1,24 +1,36 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -g
-TARGET = corelib
+LSAN_OPTIONS = detect_leaks=0
 
-SRCS = src/my_malloc.c src/my_string.c src/stack.c src/queue.c src/main.c
+# final binary
+TARGET = bin
+
+# all .c files
+SRCS = main.c my_malloc.c stack.c queue.c my_string.c
+
+# automatically generate .o names from .c names
 OBJS = $(SRCS:.c=.o)
 
+# Run the program
 run: $(TARGET)
-	./$(TARGET)
+	LSAN_OPTIONS=detect_leaks=0 ./$(TARGET)
 
+# default target — runs when you just type 'make'
 all: $(TARGET)
 
+# link all object files into final binary
 $(TARGET): $(OBJS)
 	$(CC) $(CFLAGS) -o $(TARGET) $(OBJS)
 
+# compile each .c into .o
 %.o: %.c
-	$(CC) $(CFLAGS) -I include -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
+# clean build artifacts
 clean:
-	/run/current-system/sw/bin/rm -f $(OBJS) $(TARGET)
+	rm -f $(OBJS) $(TARGET)
 
+# rebuild from scratch
 re: clean all
 
-.PHONY: all clean re
+.PHONY: all clean re run

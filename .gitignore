@@ -3,6 +3,7 @@ corelib
 
 # object files
 *.o
+bin
 
 # debug files
 *.dSYM
