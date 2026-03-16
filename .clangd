@@ -1,0 +1,5 @@
+CompileFlags:
+  Add:
+    - -I/home/tom/c/c/g/r/my_malloc/include
+    - -Wall
+    - -Wextra
