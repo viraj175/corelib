@@ -81,15 +81,3 @@ enqueue(q, string_new("second"));
 printf("%s\n", dequeue(q)->str);  // first
 queue_free(&q);
 ```
-
----
-
-## Why I built this
-
-I'm learning CUDA/GPU programming and wanted a solid understanding of manual memory management before touching GPU memory. `cudaMalloc` and `cudaFree` follow the same mental model as what's in this project — allocate, track, reuse, free. building this made that click.
-
----
-
-## What's next
-
-moving into CUDA — writing GPU kernels, memory optimization, eventually ML inference acceleration.
