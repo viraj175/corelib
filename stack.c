@@ -42,15 +42,9 @@ void push (Stack *st, String *data)
 
 String *pop (Stack *st)
 {
-    if (st == NULL)
+    if (st == NULL || st->top == NULL)
     {
-        fprintf(stderr, "ERROR: stack is invalid or doesn't exist!\n");
-        return NULL;
-    }
-
-    if (st->top == NULL)
-    {
-        fprintf(stderr, "WARNING: stack is empty, can't pop!\n");
+        fprintf(stderr, "ERROR: stack doesn't exist or empty, can't pop!\n");
         return NULL;
     }
 
@@ -65,9 +59,9 @@ String *pop (Stack *st)
 
 String *peek (Stack *st)
 {
-    if (st == NULL)
+    if (st == NULL || st->top == NULL)
     {
-        fprintf(stderr, "ERROR: stack is invalid or doesn't exist!\n");
+        fprintf(stderr, "ERROR: stack is invalid or doesn't exist, can't peek!\n");
         return NULL;
     }
 
@@ -87,7 +81,7 @@ void stack_print (Stack *st)
     stackNode *temp = st->top;
     while (temp != NULL)
     {
-        printf("[ DATA: %s ] --> ", temp->data->str);
+        printf("[ DATA: %s ] --> ", temp->data ? temp->data->str : "NULL");
         temp = temp->next;
     }
     
