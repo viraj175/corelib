@@ -1,9 +1,9 @@
 CC = gcc
-CFLAGS = -Wall -Wextra -g
+CFLAGS = -Wall -Wextra -g -fsanitize=address
 LSAN_OPTIONS = detect_leaks=0
 
 # final binary
-TARGET = bin
+TARGET = corelib
 
 # all .c files
 SRCS = main.c my_malloc.c stack.c queue.c my_string.c
@@ -28,7 +28,7 @@ $(TARGET): $(OBJS)
 
 # clean build artifacts
 clean:
-	rm -f $(OBJS) $(TARGET)
+	/run/current-system/sw/bin/rm -f $(OBJS) $(TARGET)
 
 # rebuild from scratch
 re: clean all

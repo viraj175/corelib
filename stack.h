@@ -4,12 +4,22 @@
 #include "my_malloc.h"
 #include "my_string.h"
 
+typedef struct node {
+    struct node *next;
+    String *data;
+} stackNode;
+
 typedef struct stack {
-    String data;
-    int top;
+    stackNode *top;
     size_t size;
-    size_t capacity;
 } Stack;
 
+void push (Stack *st, String *data);
+String *pop (Stack *st);
+String *peek (Stack *st);
+int is_empty (Stack *st);
+void stack_print (Stack *st);
+Stack *stack_new (void);
+void stack_free (Stack **st);
 
 #endif // !STACK_H
