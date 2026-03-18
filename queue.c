@@ -99,6 +99,12 @@ queue_print (Queue *q)
         return;
     }
 
+    if (q->front == NULL)
+    {
+        printf("EMPTY QUEUE\n");
+        return;
+    }
+
     printf("front --> ");
 
     queueNode *temp = q->front;

@@ -100,7 +100,7 @@ void stack_free (Stack **st)
 
     while ((*st)->top != NULL)
     {
-        stackNode *temp = (*st)->top;
+       stackNode *temp = (*st)->top;
         (*st)->top = temp->next;
         my_free((void **)&temp);
     }
