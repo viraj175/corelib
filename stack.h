@@ -4,8 +4,8 @@
 #include "my_malloc.h"
 #include "my_string.h"
 
-typedef struct node {
-    struct node *next;
+typedef struct stackNode {
+    struct stackNode *next;
     String *data;
 } stackNode;
 
@@ -16,8 +16,8 @@ typedef struct stack {
 
 void push (Stack *st, String *data);
 String *pop (Stack *st);
-String *peek (Stack *st);
-int is_empty (Stack *st);
+String *stack_peek (Stack *st);
+int is_stack_empty (Stack *st);
 void stack_print (Stack *st);
 Stack *stack_new (void);
 void stack_free (Stack **st);

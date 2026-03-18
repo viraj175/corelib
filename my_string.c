@@ -7,6 +7,12 @@ String *string_new (const char *initial)
     size_t len = strlen(initial);
     String *new = my_malloc(sizeof(String));
 
+    if (new == NULL)
+    {
+        fprintf(stderr, "ERROR: memory allocation failed for string!\n");
+        return NULL;
+    }
+
     new->len = len;
     new->capacity = len + 1;
     new->str = my_malloc(len + 1);
@@ -61,7 +67,7 @@ int string_get(String *s, size_t index, char *out)
 
 void string_free(String **s)
 {
-    if (!*s || !s) return;
+    if (!s || !*s) return;
     my_free((void **)&(*s)->str);
     (*s)->capacity = 0;
     (*s)->len = 0;

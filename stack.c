@@ -9,7 +9,7 @@ Stack *stack_new ()
     Stack *new_stack = my_malloc(sizeof(Stack));
     if (new_stack == NULL)
     {
-        fprintf(stderr, "Memory allocation failed!\n");
+        fprintf(stderr, "ERROR: memory allocation failed!\n");
         return NULL;
     }
 
@@ -57,7 +57,7 @@ String *pop (Stack *st)
     return data;
 }
 
-String *peek (Stack *st)
+String *stack_peek (Stack *st)
 {
     if (st == NULL || st->top == NULL)
     {
@@ -88,7 +88,7 @@ void stack_print (Stack *st)
     printf("NULL\n");
 }
 
-int is_empty (Stack *st)
+int is_stack_empty (Stack *st)
 {
     if (st == NULL) return 1;
     return st->top == NULL;
